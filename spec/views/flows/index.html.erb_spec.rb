@@ -1,5 +1,8 @@
-require 'rails_helper'
+#no view tests
 
-RSpec.describe "flows/index.html.erb", :type => :view do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+# require 'rails_helper'
+
+# RSpec.describe "flows/index.html.erb", :type => :view do
+
+
+# end

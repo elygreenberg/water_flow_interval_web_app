@@ -1,5 +1,19 @@
 class Flow < ActiveRecord::Base
 
+#associations
+#none
+
+#gems
+#none
+
+#validations
+  validates :time, :flowrate, presence: true
+
+#callbacks
+#none
+
+#methods
+
   def self.generate_data
     Flow.create(time: Time.now, flowrate: generate_diurnal_data * rand() )
   end
