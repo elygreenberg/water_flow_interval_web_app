@@ -3,7 +3,7 @@
     %h1
       Full Stack Developer - Interval Web App 
     %h4
-      by Ely Greenberg (ergreenberg@gmail.com), submitted on September 23, 2014
+      by Ely Greenberg ( #{mail_to "ergreenberg@gmail.com", "ergreenberg@gmail.com"} ), submitted on September 23, 2014.
 
     %hr
 
@@ -32,7 +32,9 @@
     %p Notes
     %ul
       %li
-        This is a ROR web-app that displays fictitious flow data from a water meter. Water flows are typically diurnal, and the flowrates are randomly generated using a rake function that runs every hour. After the rake function completes the data that is generated is saved to the database. 
+        This is an ROR web-app that displays fictitious flow data from a water meter. Water flows are typically diurnal, and the flowrates are randomly generated using a rake function that runs every hour. After the rake function completes the data that is generated is saved to the database. 
+      %li 
+        JSON data is available at #{link_to "data.json", data_path, format: "json" }
       %li
         The annotation chart is from the Google Charts API. 
       %li
