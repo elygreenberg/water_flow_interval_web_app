@@ -1,0 +1,9 @@
+{
+  "cols": [{"id": "datetime", "label": "DateTime", "type": "datetime"},
+        {"id": "flow", "label": "flow", "type": "number"}],
+ 
+  "rows":[ <% @chart_data.each do |data| %>
+  {"c": [{"v":"Date(<%= data.time.strftime("%Y,%m,%d,%H,%M") %>)"}, {"v": <%= data.flowrate %>}]}<%= data.id == @chart_data.last.id ? " " : "," %>
+<% end %>
+  ]
+}

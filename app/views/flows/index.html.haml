@@ -1,0 +1,76 @@
+.row
+  .small-12.large-12.columns
+    %h1
+      Full Stack Developer - Interval Web App 
+    %h4
+      by Ely Greenberg (ergreenberg@gmail.com), submitted on September 23, 2014
+
+    %hr
+
+    #chart_div
+
+    =link_to "Generate Sample Data", generate_path 
+    %br
+    %br
+    %br
+    %hr
+
+.row
+  .small-12.large-6.columns 
+    %table
+      %thead 
+        %tr
+          %th.text-center Time
+          %th.text-center Flow (gallons)
+      %tbody
+        -@flows.each do |f|
+          %tr
+            %td.text-center= f.time
+            %td.text-center= f.flowrate
+  
+  .small-12.large-6.columns
+    %p Notes
+    %ul
+      %li
+        This is a ROR web-app that displays fictitious flow data from a water meter. Water flows are typically diurnal, and the flowrates are randomly generated using a rake function that runs every hour. After the rake function completes the data that is generated is saved to the database. 
+      %li
+        The annotation chart is from the Google Charts API. 
+      %li
+        The front-end, albeit sparse, is built using the Foundation framework. 
+
+    %p Other Approaches
+
+    %p
+      Another approach to solving this challenge could be to setup an API where the data is generated. This would perhaps more closely mimic collecting data from a remote water meter (or meter of any kind). 
+
+  
+  %br
+  %br
+  %br
+
+
+%script{type:"text/javascript", src:"https://www.google.com/jsapi"}
+
+:javascript
+  google.load('visualization', '1.1', {'packages':['annotationchart']});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var jsonData = $.ajax({
+    url: "../data.json",
+    dataType:"json",
+    async: false
+    }).responseText;
+
+    var annotation_data = new google.visualization.DataTable(jsonData);
+    
+    console.log(jsonData)
+
+    var chart = new google.visualization.AnnotationChart(document.getElementById('chart_div'));
+
+    var options = {
+      displayAnnotations: true
+    };
+
+    chart.draw(annotation_data, options);
+  } 
+
